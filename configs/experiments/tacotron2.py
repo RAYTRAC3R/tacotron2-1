@@ -169,6 +169,18 @@ class PreprocessingConfig:
            'speaker_id': 1,
            'process_audio': True,
            'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Barf Bag',
+           'speaker_id': 2,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Basketball',
+           'speaker_id': 3,
+           'process_audio': True,
+           'emotion_present': True
         }
     ]
 
