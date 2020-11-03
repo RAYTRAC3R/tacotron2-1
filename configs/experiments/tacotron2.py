@@ -9,7 +9,7 @@ class Config:
     sampling_rate = 22050                        # Sampling rate
     filter_length = 1024                         # Filter length
     hop_length = 256                             # Hop (stride) length
-    win_length = 1024                            # Window length
+    win_length = 1024                            # Window length                           # Window length
     mel_fmin = 0.0                               # Minimum mel frequency
     mel_fmax = 8000.0                            # Maximum mel frequency
     n_mel_channels = 80                          # Number of bins in mel-spectrograms
@@ -28,17 +28,17 @@ class Config:
     n_speakers = 128                             # Number of speakers
     speakers_embedding_dim = 16                  # Speaker embedding dimension
     try:
-        speaker_coefficients = json.load(open('/drl/train/speaker_coefficients.json'))  # Dict with speaker coefficients
+        speaker_coefficients = json.load(open('/content/tacotron2/train/speaker_coefficients.json'))  # Dict with speaker coefficients
     except IOError:
         print("Speaker coefficients dict is not available")
         speaker_coefficients = None
 
     # Emotions
     use_emotions = True                          # Use emotions
-    n_emotions = 15                              # N emotions
+    n_emotions = 16                              # N emotions
     emotions_embedding_dim = 8                   # Emotion embedding dimension
     try:
-        emotion_coefficients = json.load(open('/drl/train/emotion_coefficients.json'))  # Dict with emotion coefficients
+        emotion_coefficients = json.load(open('/content/tacotron2/train/emotion_coefficients.json'))  # Dict with emotion coefficients
     except IOError:
         print("Emotion coefficients dict is not available")
         emotion_coefficients = None
@@ -96,14 +96,14 @@ class Config:
 
     # ** Script args **
     model_name = "Tacotron2"
-    output_directory = "/drl/logs"                   # Directory to save checkpoints
+    output_directory = "/content/drive/My Drive/multispeaker/BFDAI test"                   # Directory to save checkpoints
     log_file = "nvlog.json"                      # Filename for logging
 
     anneal_steps = [500, 1000, 1500]             # Epochs after which decrease learning rate
     anneal_factor = 0.1                          # Factor for annealing learning rate
 
-    tacotron2_checkpoint = '/drl/pretrained/t2_fp32_torch'   # Path to pre-trained Tacotron2 checkpoint for sample generation
-    waveglow_checkpoint = '/drl/pretrained/wg_fp32_torch'    # Path to pre-trained WaveGlow checkpoint for sample generation
+    tacotron2_checkpoint = ''   # Path to pre-trained Tacotron2 checkpoint for sample generation
+    waveglow_checkpoint = '/content/tacotron2/wg_fp32_torch'    # Path to pre-trained WaveGlow checkpoint for sample generation
     restore_from = ''                                        # Checkpoint path to restore from
 
     # Training params
@@ -112,7 +112,7 @@ class Config:
     seed = 1234                                  # Seed for PyTorch random number generators
     dynamic_loss_scaling = True                  # Enable dynamic loss scaling
     amp_run = False                              # Enable AMP (FP16) # TODO: Make it work
-    cudnn_enabled = True                         # Enable cudnn
+    cudnn_enabled = False                       # Enable cudnn
     cudnn_benchmark = False                      # Run cudnn benchmark
 
     # Optimization params
@@ -125,8 +125,8 @@ class Config:
     # Dataset
     load_mel_from_dist = False                   # Loads mel spectrograms from disk instead of computing them on the fly
     text_cleaners = ['english_cleaners']         # Type of text cleaners for input text
-    training_files = '/drl/train/train.txt'          # Path to training filelist
-    validation_files = '/drl/train/val.txt'          # Path to validation filelist
+    training_files = '/content/tacotron2/train/train.txt'          # Path to training filelist
+    validation_files = '/content/tacotron2/train/val.txt'          # Path to validation filelist
 
     dist_url = 'tcp://localhost:23456'           # Url used to set up distributed training
     group_name = "group_name"                    # Distributed group name
@@ -134,7 +134,7 @@ class Config:
 
     # Sample phrases
     phrases = {
-        'speaker_ids': [0, 2],
+        'speaker_ids': [0, 11],
         'texts': [
             'Hello, how are you doing today?',
             'I would like to eat a Hamburger.',
@@ -147,14 +147,14 @@ class Config:
 
 class PreprocessingConfig:
     cpus = 42                                    # Amount of cpus for parallelization
-    sr = 48000                                   # sampling ratio for audio processing
+    sr = 22050                                   # sampling ratio for audio processing
     top_db = 40                                  # level to trim audio
     limit_by = '8-Ball'                   # speaker to measure text_limit, dur_limit
     minimum_viable_dur = 0.05                    # min duration of audio
     text_limit = None                            # max text length (used by default)
     dur_limit = None                             # max audio duration (used by default)
     n = 15000                                    # max size of training dataset per speaker
-    start_from_preprocessed = False             # load data.csv - should be in output_directory
+    start_from_preprocessed = True             # load data.csv - should be in output_directory
 
     output_directory = 'train'
     data = [
@@ -181,6 +181,54 @@ class PreprocessingConfig:
            'speaker_id': 3,
            'process_audio': True,
            'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Bell',
+           'speaker_id': 4,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Black Hole',
+           'speaker_id': 5,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Classic Blocky',
+           'speaker_id': 6,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Modern Blocky',
+           'speaker_id': 7,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Bomby',
+           'speaker_id': 8,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Book',
+           'speaker_id': 9,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Bottle',
+           'speaker_id': 10,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Bracelety',
+           'speaker_id': 11,
+           'process_audio': True,
+           'emotion_present': True
         }
     ]
 
@@ -199,5 +247,6 @@ class PreprocessingConfig:
         'Sarcastic': 11,
         'Whining': 12,
         'Amused': 13,
-        'Tired': 14
+        'Tired': 14,
+        'Smug': 15
     }
