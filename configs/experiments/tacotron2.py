@@ -154,7 +154,7 @@ class PreprocessingConfig:
     text_limit = None                            # max text length (used by default)
     dur_limit = None                             # max audio duration (used by default)
     n = 15000                                    # max size of training dataset per speaker
-    start_from_preprocessed = True             # load data.csv - should be in output_directory
+    start_from_preprocessed = False             # load data.csv - should be in output_directory
 
     output_directory = 'train'
     data = [
@@ -227,6 +227,18 @@ class PreprocessingConfig:
         {
            'path': '/content/tacotron2/BFDAI/Bracelety',
            'speaker_id': 11,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Classic Bubble',
+           'speaker_id': 12,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Modern Bubble',
+           'speaker_id': 13,
            'process_audio': True,
            'emotion_present': True
         }
