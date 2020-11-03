@@ -147,57 +147,45 @@ class Config:
 
 class PreprocessingConfig:
     cpus = 42                                    # Amount of cpus for parallelization
-    sr = 22050                                   # sampling ratio for audio processing
+    sr = 48000                                   # sampling ratio for audio processing
     top_db = 40                                  # level to trim audio
-    limit_by = 'linda_johnson'                   # speaker to measure text_limit, dur_limit
+    limit_by = '8-Ball'                   # speaker to measure text_limit, dur_limit
     minimum_viable_dur = 0.05                    # min duration of audio
     text_limit = None                            # max text length (used by default)
     dur_limit = None                             # max audio duration (used by default)
     n = 15000                                    # max size of training dataset per speaker
-    start_from_preprocessed = True               # load data.csv - should be in output_directory
+    start_from_preprocessed = False             # load data.csv - should be in output_directory
 
-    output_directory = '/drl/train'
+    output_directory = 'train'
     data = [
         {
-            'path': '/drl/raw-data/linda_johnson',
+            'path': '/content/tacotron2/BFDAI/8-Ball',
             'speaker_id': 0,
-            'process_audio': False,
-            'emotion_present': False
-        },
-        {
-           'path': '/drl/raw-data/scarjo_the_dive_descript_grouped_50mil',
-           'speaker_id': 1,
-           'process_audio': True,
-           'emotion_present': False
-        },
-        {
-           'path': '/drl/raw-data/scarjo_the_dive_descript_ungrouped',
-           'speaker_id': 1,
-           'process_audio': True,
-           'emotion_present': False
-        },
-        {
-            'path': '/drl/raw-data/melissa',
-            'speaker_id': 2,
             'process_audio': True,
             'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Balloony',
+           'speaker_id': 1,
+           'process_audio': True,
+           'emotion_present': True
         }
     ]
 
     emo_id_map = {
-        'neutral-normal': 0,
-        'calm-normal': 1,
-        'calm-strong': 2,
-        'happy-normal': 3,
-        'happy-strong': 4,
-        'sad-normal': 5,
-        'sad-strong': 6,
-        'angry-normal': 7,
-        'angry-strong': 8,
-        'fearful-normal': 9,
-        'fearful-strong': 10,
-        'disgust-normal': 11,
-        'disgust-strong': 12,
-        'surprised-normal': 13,
-        'surprised-strong': 14
+        'Unknown': 0,
+        'Neutral': 1,
+        'Happy': 2,
+        'Sad': 3,
+        'Angry': 4,
+        'Whispering': 5,
+        'Anxious': 6,
+        'Annoyed': 7,
+        'Confused': 8,
+        'Fear': 9,
+        'Surprised': 10,
+        'Sarcastic': 11,
+        'Whining': 12,
+        'Amused': 13,
+        'Tired': 14
     }
