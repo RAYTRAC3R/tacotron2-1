@@ -104,15 +104,15 @@ class Config:
 
     tacotron2_checkpoint = ''   # Path to pre-trained Tacotron2 checkpoint for sample generation
     waveglow_checkpoint = '/content/tacotron2/wg_fp32_torch'    # Path to pre-trained WaveGlow checkpoint for sample generation
-    restore_from = ''                                        # Checkpoint path to restore from
+    restore_from = '/content/drive/My Drive/multispeaker/BFDAI test/tacotron2/04-11-20/05-17-57/checkpoints/checkpoint_4500'          # Checkpoint path to restore from
 
     # Training params
-    epochs = 1501                                # Number of total epochs to run
+    epochs = 5001                                # Number of total epochs to run
     epochs_per_checkpoint = 50                   # Number of epochs per checkpoint
     seed = 1234                                  # Seed for PyTorch random number generators
     dynamic_loss_scaling = True                  # Enable dynamic loss scaling
     amp_run = False                              # Enable AMP (FP16) # TODO: Make it work
-    cudnn_enabled = False                       # Enable cudnn
+    cudnn_enabled = True                       # Enable cudnn
     cudnn_benchmark = False                      # Run cudnn benchmark
 
     # Optimization params
@@ -134,12 +134,11 @@ class Config:
 
     # Sample phrases
     phrases = {
-        'speaker_ids': [0, 11],
+        'speaker_ids': [11, 30],
         'texts': [
             'Hello, how are you doing today?',
-            'I would like to eat a Hamburger.',
-            'Hi.',
-            'I would like to eat a Hamburger. Would you like to join me?',
+            'Ice Cube!',
+            'I wanna eat yoylecake.',
             'Do you have any hobbies?'
         ]
     }
@@ -241,6 +240,114 @@ class PreprocessingConfig:
            'speaker_id': 13,
            'process_audio': True,
            'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Cake',
+           'speaker_id': 14,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Clock',
+           'speaker_id': 15,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Cloudy',
+           'speaker_id': 16,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Classic Coiny',
+           'speaker_id': 17,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Modern Coiny',
+           'speaker_id': 18,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Donut',
+           'speaker_id': 19,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Eggy',
+           'speaker_id': 20,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Classic Eraser',
+           'speaker_id': 21,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Modern Eraser',
+           'speaker_id': 22,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Fanny',
+           'speaker_id': 23,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Firey Jr',
+           'speaker_id': 24,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Classic Firey',
+           'speaker_id': 25,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Modern Firey',
+           'speaker_id': 26,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Classic Flower',
+           'speaker_id': 27,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Modern Flower',
+           'speaker_id': 28,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Foldy',
+           'speaker_id': 29,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Four',
+           'speaker_id': 30,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Fries',
+           'speaker_id': 31,
+           'process_audio': True,
+           'emotion_present': True
         }
     ]
 
@@ -254,6 +361,7 @@ class PreprocessingConfig:
         'Anxious': 6,
         'Annoyed': 7,
         'Confused': 8,
+        'Confusion': 8,
         'Fear': 9,
         'Surprised': 10,
         'Sarcastic': 11,
