@@ -104,10 +104,10 @@ class Config:
 
     tacotron2_checkpoint = ''   # Path to pre-trained Tacotron2 checkpoint for sample generation
     waveglow_checkpoint = '/content/tacotron2/wg_fp32_torch'    # Path to pre-trained WaveGlow checkpoint for sample generation
-    restore_from = '/content/drive/My Drive/multispeaker/BFDAI test/tacotron2/04-11-20/05-17-57/checkpoints/checkpoint_4500'          # Checkpoint path to restore from
+    restore_from = '/content/drive/My Drive/multispeaker/BFDAI test/tacotron2/05-11-20/02-04-01/checkpoints/checkpoint_5100'          # Checkpoint path to restore from
 
     # Training params
-    epochs = 5001                                # Number of total epochs to run
+    epochs = 5101                                # Number of total epochs to run
     epochs_per_checkpoint = 50                   # Number of epochs per checkpoint
     seed = 1234                                  # Seed for PyTorch random number generators
     dynamic_loss_scaling = True                  # Enable dynamic loss scaling
@@ -346,6 +346,24 @@ class PreprocessingConfig:
         {
            'path': '/content/tacotron2/BFDAI/Fries',
            'speaker_id': 31,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Gaty',
+           'speaker_id': 32,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Gelatin',
+           'speaker_id': 33,
+           'process_audio': True,
+           'emotion_present': True
+        },
+        {
+           'path': '/content/tacotron2/BFDAI/Classic Golf Ball',
+           'speaker_id': 34,
            'process_audio': True,
            'emotion_present': True
         }
